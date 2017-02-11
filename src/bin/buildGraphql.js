@@ -8,7 +8,8 @@ import {graphql} from 'graphql';
 import {introspectionQuery, printSchema} from 'graphql/utilities';
 
 const root = process.cwd();
-const schema = require(path.resolve(root, process.argv[2]));
+const schemaPath = path.resolve(root, process.argv[2]);
+const schema = require(schemaPath).default || require(schemaPath);
 
 graphql(schema, introspectionQuery).then(result => {
   fs.writeFileSync(
