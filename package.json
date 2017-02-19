@@ -10,7 +10,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "graphql",
   "author": {
     "name": "hsuting",
