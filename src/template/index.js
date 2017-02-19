@@ -1,10 +1,9 @@
 'use strict';
 
 import path from 'path';
-import process from 'process';
 import getbabelRelayPlugin from 'babel-relay-plugin';
 
-const root = process.cwd();
-const schema = require(path.resolve(root, './schema.json'));
+const root = path.resolve(__dirname, './data');
+const schema = require(path.resolve(root, './<%= name %>.json'));
 
 module.exports = getbabelRelayPlugin(schema.data);
