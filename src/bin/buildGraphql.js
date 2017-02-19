@@ -44,7 +44,7 @@ Object.keys(config).forEach(name => {
   );
 
   mem.commit(err => {
-    if(!err)
+    if(err)
       throw new Error(err);
   });
 });
