@@ -4,3 +4,7 @@ yarn.lock
 .editorconfig
 .eslint*
 .yo-rc.json
+data
+plugins
+schemas
+test
