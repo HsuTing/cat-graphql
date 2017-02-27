@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import {graphql} from 'graphql';
 import {introspectionQuery, printSchema} from 'graphql/utilities';
 import memFs from 'mem-fs';
 import editor from 'mem-fs-editor';
+import chalk from 'chalk';
 
 const root = process.cwd();
 const configPath = path.resolve(root, process.argv[2]);
@@ -16,7 +16,7 @@ const templatePath = path.resolve(__dirname, './../template/index.js');
 const fileRoot = path.resolve(__dirname, './../../data');
 const pluginsRoot = path.resolve(__dirname, './../../plugins');
 const store = memFs.create();
-const mem = editor.create(store);
+const fs = editor.create(store);
 
 Object.keys(config).forEach(name => {
   // write schema
@@ -24,27 +24,31 @@ Object.keys(config).forEach(name => {
   const schema = require(schemaPath).default || require(schemaPath);
 
   graphql(schema, introspectionQuery).then(result => {
-    fs.writeFileSync(
+    fs.writeJSON(
       path.resolve(fileRoot, `${name}.json`),
-      JSON.stringify(result, null, 2)
+      result,
+      null,
+      2
     );
   });
 
-  fs.writeFileSync(
+  fs.write(
     path.resolve(fileRoot, `${name}.graphql`),
     printSchema(schema)
   );
 
   // write plugins
-  mem.copyTpl(
+  fs.copyTpl(
     templatePath,
     path.resolve(pluginsRoot, `${name}.js`), {
       name
     }
   );
 
-  mem.commit(err => {
+  fs.commit(err => {
     if(err)
       throw new Error(err);
+
+    console.log(chalk.green('rendered ') + chalk.cyan(`cat-graphql/plugins/${name}`));
   });
 });

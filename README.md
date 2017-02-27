@@ -2,7 +2,7 @@
 Use for `babel-relay-plugin`.
 
 ## How to use
-- Write config file, like `graphql.json`.
+- Write config file, like `graphql.json`. [Here](./test/graphql.json) is example.
 ```javascript
 {
   "pluginName": "/PATH/TO/SCHEMA"
