@@ -25,6 +25,12 @@ build-graphql [path of cofig file]
 
 - Then, you can use to build components with `relay`.
 
+## Show graphql
+- After you build plugins, you can use `show-graphql` to read `graphql`.
+```sh
+show-graphql
+```
+
 ## License
 MIT © [hsuting](http://hsuting.com)
 
