@@ -20,6 +20,9 @@ fs.readdir(
         choices.push(file);
     });
 
+    if(choices.length === 0)
+      throw new Error('You need to build `plugins`, first.');
+
     inquirer.prompt([{
       type: 'checkbox',
       name: 'names',
