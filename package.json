@@ -9,7 +9,8 @@
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
     "test-build": "yarn babel && ./lib/bin/buildGraphql.js ./test/graphql.json",
-    "test-show": "yarn babel && ./lib/bin/showGraphql.js"
+    "test-show": "yarn babel && ./lib/bin/showGraphql.js",
+    "prepublish": "yarn babel"
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
