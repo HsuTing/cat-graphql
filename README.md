@@ -1,4 +1,4 @@
-# Cat-graphql [![NPM version][npm-image]][npm-url]
+# Cat-graphql [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 Use for `babel-relay-plugin`.
 
 ## How to use
@@ -36,3 +36,5 @@ MIT © [hsuting](http://hsuting.com)
 
 [npm-image]: https://badge.fury.io/js/cat-graphql.svg
 [npm-url]: https://npmjs.org/package/cat-graphql
+[travis-image]: https://travis-ci.org/HsuTing/cat-graphql.svg?branch=master
+[travis-url]: https://travis-ci.org/HsuTing/cat-graphql
