@@ -1,16 +1,18 @@
 {
-  "bin": {
-    "build-graphql": "./lib/bin/buildGraphql.js",
-    "show-graphql": "./lib/bin/showGraphql.js"
-  },
   "scripts": {
+    "test": "yarn test:remove && yarn babel && yarn test:build && istanbul cover _mocha -- -R spec test/**/*",
+    "test:remove": "rm -rf ./data ./plugins",
+    "test:build": "./lib/bin/buildGraphql.js ./test/graphql.json",
+    "test:show": "./lib/bin/showGraphql.js",
     "lint": "eslint --cache ./src ./bin --ext .js",
     "lint:watch": "esw --cache ./src ./bin --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
-    "test-build": "yarn babel && ./lib/bin/buildGraphql.js ./test/graphql.json",
-    "test-show": "yarn babel && ./lib/bin/showGraphql.js",
     "prepublish": "yarn babel"
+  },
+  "bin": {
+    "build-graphql": "./lib/bin/buildGraphql.js",
+    "show-graphql": "./lib/bin/showGraphql.js"
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
@@ -51,7 +53,10 @@
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-watch": "^2.1.14",
-    "pre-commit": "^1.2.2"
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "pre-commit": "^1.2.2",
+    "should": "^11.2.1"
   },
   "dependencies": {
     "babel-relay-plugin": "^0.11.0",
