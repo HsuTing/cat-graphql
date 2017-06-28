@@ -7,7 +7,7 @@ const {introspectionQuery} = require('graphql/utilities');
 describe('bin', () => {
   it('# build schema', () => {
     const schema = require('./../lib/test/schema').default;
-    const data = require('./../data/schema.json');
+    const data = require('./../data/test-schema.json');
 
     graphql(schema, introspectionQuery).then(result => {
       (JSON.stringify(result)).should.equal(JSON.stringify(data));
