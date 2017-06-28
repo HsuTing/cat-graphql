@@ -4,7 +4,6 @@ const should = require('should');
 const {graphql} = require('graphql');
 const {introspectionQuery} = require('graphql/utilities');
 
-
 describe('bin', () => {
   it('# build schema', () => {
     const schema = require('./../lib/test/schema').default;
