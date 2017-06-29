@@ -16,8 +16,7 @@ const dataType = new GraphQLObjectType({
     },
     data: {
       type: GraphQLString,
-      description: 'data',
-      resolve: root => root.data || ''
+      description: 'data'
     }
   })
 });

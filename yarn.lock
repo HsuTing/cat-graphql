@@ -1654,11 +1654,11 @@ graphql@0.9.1:
   dependencies:
     iterall "1.0.3"
 
-graphql@^0.9.1:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.9.6.tgz#514421e9d225c29dfc8fd305459abae58815ef2c"
+graphql@^0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.10.3.tgz#c313afd5518e673351bee18fb63e2a0e487407ab"
   dependencies:
-    iterall "^1.0.0"
+    iterall "^1.1.0"
 
 growl@1.9.2:
   version "1.9.2"
@@ -1983,7 +1983,7 @@ iterall@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.0.3.tgz#e0b31958f835013c323ff0b10943829ac69aa4b7"
 
-iterall@^1.0.0:
+iterall@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.1.tgz#f7f0af11e9a04ec6426260f5019d9fcca4d50214"
 
