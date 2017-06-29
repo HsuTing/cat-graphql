@@ -53,6 +53,7 @@
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-watch": "^2.1.14",
+    "graphql": "^0.10.3",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "pre-commit": "^1.2.2",
