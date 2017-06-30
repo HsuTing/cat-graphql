@@ -3,52 +3,63 @@
 
 import path from 'path';
 import process from 'process';
-import {graphql} from 'graphql';
-import {introspectionQuery, printSchema} from 'graphql/utilities';
+import {printSchema} from 'graphql/utilities';
 import memFs from 'mem-fs';
 import editor from 'mem-fs-editor';
 import chalk from 'chalk';
 
 const root = process.cwd();
-const configPath = path.resolve(root, process.argv[2]);
-const config = require(configPath);
-const templatePath = path.resolve(__dirname, './../template/index.js');
-const fileRoot = path.resolve(__dirname, './../../data');
-const pluginsRoot = path.resolve(__dirname, './../../plugins');
 const store = memFs.create();
 const fs = editor.create(store);
+// default config
+let schemaPath = './schema';
+let filePath = './';
+let name = 'schema';
 
-Object.keys(config).forEach(name => {
-  // write schema
-  const schemaPath = path.resolve(root, config[name]);
-  const schema = require(schemaPath).default || require(schemaPath);
+const nextArgv = (argv, index) => {
+  if(index + 1 >= process.argv.length)
+    throw new Error('This value of the argument is not defined.');
 
-  graphql(schema, introspectionQuery).then(result => {
-    fs.writeJSON(
-      path.resolve(fileRoot, `${name}.json`),
-      result,
-      null,
-      2
-    );
-  });
+  return process.argv[index + 1];
+};
 
-  fs.write(
-    path.resolve(fileRoot, `${name}.graphql`),
-    printSchema(schema)
-  );
+// get config
+process.argv.forEach((argv, index) => {
+  switch(argv) {
+    case '--path':
+    case '-p':
+      filePath = nextArgv(argv, index);
+      break;
 
-  // write plugins
-  fs.copyTpl(
-    templatePath,
-    path.resolve(pluginsRoot, `${name}.js`), {
-      name
-    }
-  );
+    case '--name':
+    case '-n':
+      name = nextArgv(argv, index);
+      break;
 
-  fs.commit(err => {
-    if(err)
-      throw new Error(err);
+    case '--schema':
+    case '-s':
+      schemaPath = nextArgv(argv, index);
+      break;
 
-    console.log(chalk.green('rendered ') + chalk.cyan(`cat-graphql/plugins/${name}`));
-  });
+    default:
+      if(index >= 2 && (/-/).test(argv))
+        throw new Error(`${argv} is not in the argument list.`);
+  }
+});
+
+// write schema
+const realSchemaPath = path.resolve(root, schemaPath);
+const realFilePath = path.resolve(root, filePath, `${name}.graphql`);
+const schema = require(realSchemaPath).default || require(realSchemaPath);
+
+fs.write(
+  realFilePath,
+  printSchema(schema)
+);
+
+fs.commit(err => {
+  if(err)
+    throw new Error(err);
+
+  console.log(chalk.green('rendered ') + chalk.cyan(realFilePath));
 });

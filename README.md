@@ -1,35 +1,16 @@
 # Cat-graphql [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
-Use for `babel-relay-plugin`.
+Use to build `schema.graphql` for `babel-plugin-relay`.
 
 ## How to use
-- Write config file, like `graphql.json`. [Here](./test/graphql.json) is example.
-```javascript
-{
-  "pluginName": "/PATH/TO/SCHEMA"
-}
-```
-
 - Run script.
 ```sh
-build-graphql [path of cofig file]
+build-graphql [arguments]
 ```
 
-- Add plugin in `.babelrc`.
-```
-{
-  "plugins": [
-    "cat-graphql/plugins/pluginName"
-  ]
-}
-```
-
-- Then, you can use to build components with `relay`.
-
-## Show graphql
-- After you build plugins, you can use `show-graphql` to read `graphql`.
-```sh
-show-graphql
-```
+#### Arguments
+- `--path`, `-p`: Set the path of the output file.
+- `--name`, `-n`: Set the name of the output file.
+- `--schema`, `-s`: Set the source `schema` which is wrote by `graphql.js`.
 
 ## License
 MIT © [hsuting](http://hsuting.com)
