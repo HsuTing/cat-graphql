@@ -4,5 +4,6 @@ yarn.lock
 .editorconfig
 .eslint*
 .yo-rc.json
+.travis.yml
 test
 *.graphql
