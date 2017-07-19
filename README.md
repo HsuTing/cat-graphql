@@ -16,6 +16,6 @@ build-graphql [arguments]
 MIT © [hsuting](http://hsuting.com)
 
 [npm-image]: https://badge.fury.io/js/cat-graphql.svg
-[npm-url]: https://npmjs.org/package/cat-graphql
+[npm-url]: https://www.npmjs.com/package/cat-graphql
 [travis-image]: https://travis-ci.org/HsuTing/cat-graphql.svg?branch=master
 [travis-url]: https://travis-ci.org/HsuTing/cat-graphql
