@@ -14,7 +14,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "graphql",
   "author": {
     "name": "hsuting",
@@ -65,6 +65,7 @@
     "mem-fs-editor": "^3.0.2"
   },
   "peerDependencies": {
-    "graphql": ">= 0.10.3"
+    "graphql": ">= 0.10.3",
+    "prop-types": ">= 15.5.10"
   }
 }
