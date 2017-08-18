@@ -9,9 +9,11 @@ import transformType from './transformType';
 import addForeign from './addForeign';
 
 export default (
-  schemaPath = '',
-  typesConfigArray = [],
-  excludesFields = []
+  schemaPath,
+  typesConfigArray = [{
+    ID: 'TEXT'
+  }],
+  excludeFields = []
 ) => {
   const typesConfig = typesConfigArray.reduce((config, data) => ({
     ...config, ...data
@@ -22,10 +24,10 @@ export default (
       './../',
       schemaPath
     ),
-    excludesFields
+    excludeFields
   );
 
-  fieldsStrToObj(data, excludesFields);
+  fieldsStrToObj(data, excludeFields);
   transformType(data, typesConfig);
   addForeign(data, typesConfig.ID);
 

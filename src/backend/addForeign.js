@@ -2,19 +2,14 @@
 
 import {getTypeConfig} from './transformType';
 
-const typeNotDefine = name => console.log(`type "${name}" is not defined\n`);
-
-export default (
-  data = {},
-  IDConfig
-) => {
+export default (data, IDConfig) => {
   if(!IDConfig)
-    throw new Error(typeNotDefine('ID'));
+    throw new Error('type "ID" is not defined');
 
   Object.keys(data).forEach(name => {
     // check if any custom type exist
     if(!data[name].fields)
-      throw new Error(typeNotDefine(name));
+      throw new Error(`type "${name}" is not defined`);
 
     // add foreign
     if(data[name].__parent__.length !== 0) {

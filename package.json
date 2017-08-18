@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "yarn test:build && istanbul cover _mocha -- -R spec test/**/*",
+    "test": "yarn test:build && istanbul cover _mocha -- -R spec test/**/*.js",
     "test:build": "./lib/bin/buildGraphql.js --schema ./lib/test/schema.js ",
     "lint": "eslint --cache ./src ./bin --ext .js",
     "lint:watch": "esw --cache ./src ./bin --ext .js -w --color",

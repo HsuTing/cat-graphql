@@ -18,16 +18,13 @@ let setting = {
   name: null
 };
 
-export default (
-  schemaPath,
-  excludesFields = []
-) => fs.read(schemaPath)
+export default (schemaPath, excludeFields) => fs.read(schemaPath)
   .replace(/.*#.*\n/g, '') // remove description
   .split(/\n/) // split to line
   .reduce((fields, line) => {
     const [type, name, ...rest] = line.split(/ /);
 
-    if(types.includes(type) && !excludesFields.includes(name) && rest.includes('{')) {
+    if(types.includes(type) && !excludeFields.includes(name) && rest.includes('{')) {
       setting = {
         add: true,
         name

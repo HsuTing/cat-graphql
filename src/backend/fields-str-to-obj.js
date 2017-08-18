@@ -1,9 +1,6 @@
 'use strict';
 
-export default (
-  data = {},
-  excludesFields = []
-) => {
+export default (data, excludeFields) => {
   Object.keys(data).forEach(name => {
     const {fields, type: tableType} = data[name];
 
@@ -23,19 +20,19 @@ export default (
         const [fieldName, fieldValue] = fieldStr.split(/:/g);
 
         if(fieldName && !['clientMutationId'].includes(fieldName)) {
-          const value = fieldValue || 'enum';
+          const value = fieldValue;
           const type = value.replace(/!|\[|\]/g, '');
           const obj = {
             name,
             field: fieldName
           };
 
-          if(excludesFields.includes(type))
+          if(excludeFields.includes(type))
             return fieldsObj;
 
           if(data[type])
             data[type]['__parent__'].push(obj);
-          else if(!excludesFields.includes(type))
+          else if(!excludeFields.includes(type))
             data[type] = {__parent__: [obj]};
 
           fieldsObj[fieldName] = {

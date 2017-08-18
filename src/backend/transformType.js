@@ -12,10 +12,7 @@ export const getTypeConfig = (typeConfig, field) => {
   return field;
 };
 
-export default (
-  data = {},
-  typesConfig = {}
-) => {
+export default (data, typesConfig) => {
   Object.keys(typesConfig).forEach(typeName => {
     if(data[typeName]) {
       const {__parent__: parent, ...options} = data[typeName];
@@ -23,7 +20,7 @@ export default (
 
       parent.forEach(({name, field}) => {
         data[name].fields[field] = getTypeConfig(
-          typeof typeConfig === 'function' ? (typeConfig(options) || '') : typeConfig,
+          typeof typeConfig === 'function' ? typeConfig(options) : typeConfig,
           data[name].fields[field]
         );
       });
