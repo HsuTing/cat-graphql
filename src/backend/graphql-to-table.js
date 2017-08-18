@@ -31,5 +31,11 @@ export default (
   transformType(data, typesConfig);
   addForeign(data, typesConfig.ID);
 
-  return data;
+  const output = {};
+
+  Object.keys(data).forEach(name => {
+    output[name] = {...data[name].fields};
+  });
+
+  return output;
 };

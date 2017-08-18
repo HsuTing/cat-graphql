@@ -1,19 +1,16 @@
 'use strict';
 
-const backend = require('./../lib/backend');
-const {graphqlToTable} = backend;
+const {graphqlToTable, type} = require('./../lib/backend');
 const result = {
   data: {
-    fields: {
-      id: {
-        notNull: false,
-        type: 'TEXT'
-      }
+    id: {
+      notNull: false,
+      type: 'TEXT'
     }
   }
 };
 
-describe('graphql-to-table', () => {
+describe('graphql to table', () => {
   it('# normal', () => {
     graphqlToTable(
       './schemas/normal.graphql'
@@ -30,28 +27,26 @@ describe('graphql-to-table', () => {
   it('# add exclude fields', () => {
     graphqlToTable(
       './schemas/add-exclude-fields.graphql',
-      [backend.type.sqlite],
+      [type.sqlite],
       ['Skip']
     ).should.be.eql(result);
   });
 
   it('# use "enum"', () => {
     graphqlToTable(
-      './schemas/use-enum.graphql', [backend.type.sqlite, {
+      './schemas/use-enum.graphql', [type.sqlite, {
         Enum: ({values}) => ({
           type: 'TEXT',
           check: values.map(d => `[name] === '${d}'`)
-            .join(' || ')
+            .join(' OR ')
         })
       }]
     ).should.be.eql({
       data: {
-        fields: {
-          enum: {
-            notNull: false,
-            type: 'TEXT',
-            check: '[name] === \'RED\' || [name] === \'BLUE\''
-          }
+        enum: {
+          notNull: false,
+          type: 'TEXT',
+          check: '[name] === \'RED\' OR [name] === \'BLUE\''
         }
       }
     });
@@ -60,30 +55,26 @@ describe('graphql-to-table', () => {
   it('# add foreign key', () => {
     graphqlToTable(
       './schemas/add-foreign-key.graphql',
-      [backend.type.sqlite]
+      [type.sqlite]
     ).should.be.eql(Object.assign({}, result, {
       data_2: {
-        fields: {
-          id: {
-            notNull: true,
-            type: 'TEXT'
-          },
-          data_ID: {
-            foreign: 'data',
-            type: 'TEXT'
-          }
+        id: {
+          notNull: true,
+          type: 'TEXT'
+        },
+        data_ID: {
+          foreign: 'data',
+          type: 'TEXT'
         }
       },
       data_3: {
-        fields: {
-          data: {
-            notNull: false,
-            type: 'TEXT'
-          },
-          data_2_ID: {
-            foreign: 'data_2',
-            type: 'TEXT'
-          }
+        data: {
+          notNull: false,
+          type: 'TEXT'
+        },
+        data_2_ID: {
+          foreign: 'data_2',
+          type: 'TEXT'
         }
       }
     }));
@@ -104,7 +95,7 @@ describe('graphql-to-table', () => {
       (() => {
         graphqlToTable(
           './schemas/use-enum.graphql',
-          [backend.type.sqlite]
+          [type.sqlite]
         );
       }).should.be.throw('type "Enum" is not defined');
     });

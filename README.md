@@ -3,15 +3,13 @@ Use to build `schema.graphql` for `babel-plugin-relay`.
 
 ## How to use
 #### front end
+###### RelayTypes
 ```js
-// RelayTypes
 import RelayTypes from 'cat-graphql';
 
-static propTypes = {
-  groupFields: RelayTypes({
-    fields: PropTypes.string.isRequired,
-  })
-}
+groupFields: RelayTypes({
+  fields: PropTypes.string.isRequired,
+})
 
 /*
 This will be equal to:
@@ -29,7 +27,7 @@ groupFields: PropTypes.shape({
 
 #### back end
 ###### graphqlToTable
-Use to transfrom graphql schema to a normal database table.
+Use to transform graphql schema to a normal database table.
 - Install: [callsite](https://www.npmjs.com/package/callsite)
 ```js
 import {graphqlToTable} from 'cat-graphql/lib/backend';
@@ -44,17 +42,44 @@ type data {
 result:
 {
   data: {
-    fields: {
-      id: {
-        notNull: false,
-        type: 'TEXT'
-      }   
+    id: {
+      notNull: false,
+      type: 'TEXT'
     }   
   }
 }
 */
 ```
 You can see other [examples](./test/graphql-to-table.js).
+
+###### transformSql
+Use to transform data from `graphqlToTable` to `sql`.
+
+```js
+import {transformSql} from 'cat-graphql/lib/backend';
+
+transformSql({
+  data: {
+    id: {
+      notNull: false,
+      type: 'TEXT',
+      primary: true
+    },  
+    field: {
+      notNull: true,
+      type: 'TEXT',
+      unique: true
+    }   
+  }
+});
+
+/*
+This will be equal to:
+{
+  data: 'CREATE TABLE data (id TEXT PRIMARY KEY, field TEXT NOT NULL UNIQUE)'
+}
+*/
+```
 
 #### bin
 ###### build-graphql
