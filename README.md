@@ -2,6 +2,7 @@
 Use to build `schema.graphql` for `babel-plugin-relay`.
 
 ## How to use
+#### front end
 ```js
 // RelayTypes
 import RelayTypes from 'cat-graphql';
@@ -26,18 +27,37 @@ groupFields: PropTypes.shape({
 */
 ```
 
-#### backend
-Use for the back end.
+#### back end
 ###### graphqlToTable
+Use to transfrom graphql schema to a normal database table.
 - Install: [callsite](https://www.npmjs.com/package/callsite)
 ```js
 import {graphqlToTable} from 'cat-graphql/lib/backend';
 
 graphqlToTable('./schema.graphql');
+/*
+input:
+type data {
+  id: ID
+}
+
+result:
+{
+  data: {
+    fields: {
+      id: {
+        notNull: false,
+        type: 'TEXT'
+      }   
+    }   
+  }
+}
+*/
 ```
 You can see other [examples](./test/graphql-to-table.js).
 
-#### build-graphql
+#### bin
+###### build-graphql
 Use to build graphql schema for `babel-plugin-relay`.
 ```sh
 build-graphql [arguments]

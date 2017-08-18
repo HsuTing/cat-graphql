@@ -13,7 +13,7 @@ const result = {
   }
 };
 
-describe(' graphql-to-table', () => {
+describe('graphql-to-table', () => {
   it('# normal', () => {
     graphqlToTable(
       './schemas/normal.graphql'
