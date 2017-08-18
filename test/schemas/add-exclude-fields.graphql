@@ -1,0 +1,8 @@
+type data {
+  id: ID
+  skip: Skip
+}
+
+type Skip {
+  id: ID
+}

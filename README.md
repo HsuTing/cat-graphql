@@ -33,8 +33,9 @@ Use for the back end.
 ```js
 import {graphqlToTable} from 'cat-graphql/lib/backend';
 
-graphqlToTable();
+graphqlToTable('./schema.graphql');
 ```
+You can see other [examples](./test/graphql-to-table.js).
 
 #### build-graphql
 Use to build graphql schema for `babel-plugin-relay`.

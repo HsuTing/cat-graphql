@@ -5,4 +5,4 @@ node_modules
 *.log
 coverage
 lib
-*.graphql
+schema.graphql

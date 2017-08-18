@@ -1,0 +1,12 @@
+type data {
+  id: ID
+  data: data_2
+}
+
+type data_2 {
+  data: data_3
+}
+
+type data_3 {
+  data: String
+}
