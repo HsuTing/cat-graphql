@@ -8,22 +8,11 @@ import {
   GraphQLInputObjectType
 } from 'graphql';
 
-const dataType = new GraphQLObjectType({
-  name: 'data',
-  fields: () => ({
-    clientMutationId: {
-      type: GraphQLString
-    },
-    data: {
-      type: GraphQLString,
-      description: 'data'
-    }
-  })
-});
+import dataType, {nodeField} from './dataType';
 
 const inputType = new GraphQLInputObjectType({
   name: 'input',
-  fields: () => ({
+  fields: {
     clientMutationId: {
       type: GraphQLString
     },
@@ -31,7 +20,7 @@ const inputType = new GraphQLInputObjectType({
       type: new GraphQLNonNull(GraphQLString),
       description: 'input data'
     }
-  })
+  }
 });
 
 const query = {
@@ -60,15 +49,16 @@ export default new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     description: 'all queries',
-    fields: () => ({
+    fields: {
+      node: nodeField,
       query
-    })
+    }
   }),
   mutation: new GraphQLObjectType({
     name: 'Mutation',
     description: 'all mutations',
-    fields: () => ({
+    fields: {
       mutation
-    })
+    }
   })
 });

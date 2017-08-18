@@ -24,27 +24,20 @@ groupFields: PropTypes.shape({
   ).isRequired
 })
 */
+```
 
-// addNonNull
-import {addNonNull} from 'cat-graphql/lib/utils';
+#### backend
+Use for the back end.
+###### graphqlToTable
+- Install: [callsite](https://www.npmjs.com/package/callsite)
+```js
+import {graphqlToTable} from 'cat-graphql/lib/backend';
 
-addNonNull({
-  test: {
-    type: GraphQLString,
-    description: 'Test'
-  }   
-})
-
-/*
-This will be equal to:
-test: {
-  type: new GraphQLNonNull(GraphQLString),
-  description: 'Test'
-}
-*/
+graphqlToTable();
 ```
 
 #### build-graphql
+Use to build graphql schema for `babel-plugin-relay`.
 ```sh
 build-graphql [arguments]
 ```
