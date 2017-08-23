@@ -5,5 +5,7 @@ yarn.lock
 .eslint*
 .yo-rc.json
 .travis.yml
+coverage
+.nyc_output
 test
 *.graphql
