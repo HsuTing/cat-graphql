@@ -1,5 +1,6 @@
 # Cat-graphql [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
-Use to build `schema.graphql` for `babel-plugin-relay`.
+Use to build `schema.graphql` for `babel-plugin-relay`, and other function with `graphql`.
+You can see [examples](./src/test/).
 
 ## How to use
 #### front end
@@ -50,7 +51,6 @@ result:
 }
 */
 ```
-You can see other [examples](./test/graphql-to-table.js).
 
 ###### transformSql
 Use to transform data from `graphqlToTable` to `sql`.
