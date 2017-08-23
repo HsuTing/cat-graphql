@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "test": "yarn test:build && istanbul cover _mocha -- -R spec test/**/*.js",
-    "test:build": "./lib/bin/buildGraphql.js --schema ./lib/test/schema.js ",
+    "test": "yarn babel && nyc mocha ./src/test/*.js --recursive --reporter spec",
     "lint": "eslint --cache ./src ./bin --ext .js",
     "lint:watch": "esw --cache ./src ./bin --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
@@ -55,8 +54,8 @@
     "eslint-watch": "^2.1.14",
     "graphql": "^0.10.3",
     "graphql-relay": "^0.5.2",
-    "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
+    "nyc": "^11.1.0",
     "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
     "should": "^11.2.1"

@@ -32,7 +32,7 @@ export default (data, excludeFields) => {
 
           if(data[type])
             data[type]['__parent__'].push(obj);
-          else if(!excludeFields.includes(type))
+          else
             data[type] = {__parent__: [obj]};
 
           fieldsObj[fieldName] = {

@@ -1,6 +1,7 @@
 'use strict';
 
-const {transformSql} = require('./../lib/backend');
+import should from 'should'; // eslint-disable-line no-unused-vars
+import {transformSql} from './../backend';
 
 describe('transform sql', () => {
   it('# normal', () => {

@@ -1,6 +1,9 @@
 'use strict';
 
-const {graphqlToTable, type} = require('./../lib/backend');
+import should from 'should'; // eslint-disable-line no-unused-vars
+
+import {graphqlToTable, type} from './../backend';
+
 const result = {
   data: {
     id: {
@@ -56,7 +59,8 @@ describe('graphql to table', () => {
     graphqlToTable(
       './schemas/add-foreign-key.graphql',
       [type.sqlite]
-    ).should.be.eql(Object.assign({}, result, {
+    ).should.be.eql({
+      ...result,
       data_2: {
         id: {
           notNull: true,
@@ -77,7 +81,7 @@ describe('graphql to table', () => {
           type: 'TEXT'
         }
       }
-    }));
+    });
   });
 
   describe('# throw error', () => {

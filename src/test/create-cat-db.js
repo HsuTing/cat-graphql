@@ -1,6 +1,8 @@
 'use strict';
 
-const {createCatDB} = require('./../lib/backend');
+import should from 'should'; // eslint-disable-line no-unused-vars
+
+import {createCatDB} from './../backend';
 
 describe('create cat db', () => {
   it('# normal', () => {

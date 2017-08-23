@@ -1,13 +1,13 @@
 'use strict';
 
-const should = require('should');
-const PropTypes = require('prop-types');
+import should from 'should'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types';
 
-const index = require('./../lib/index');
+import RelayTypes from './../index';
 
 describe('index', () => {
-  it('# default', () => {
-    (index.default({
+  it('# RelayTypes', () => {
+    (RelayTypes({
       test: PropTypes.string.isRequired
     })).should.be.eql(
       PropTypes.shape({
