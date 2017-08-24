@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "yarn babel && nyc mocha ./src/test/*.js --recursive --reporter spec",
+    "test": "nyc mocha ./src/test/*.js --recursive --reporter spec",
     "lint": "eslint --cache ./src ./bin --ext .js",
     "lint:watch": "esw --cache ./src ./bin --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",

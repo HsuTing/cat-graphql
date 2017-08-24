@@ -2,8 +2,8 @@
   "exclude": [
     "coverage/**/*.js",
     "lib/**/*.js",
-    "src/bin/*.js",
-    "src/test/schemas/*.js"
+    "src/test/schemas/*.js",
+    "src/bin/*.js"
   ],
   "extension": [
     ".js"
