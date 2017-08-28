@@ -8,5 +8,5 @@ yarn.lock
 .nycrc
 coverage
 .nyc_output
-test
+lib/test
 *.graphql
