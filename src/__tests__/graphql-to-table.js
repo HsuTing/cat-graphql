@@ -1,7 +1,5 @@
 'use strict';
 
-import should from 'should'; // eslint-disable-line no-unused-vars
-
 import {graphqlToTable, type} from './../backend';
 
 const result = {
@@ -15,28 +13,28 @@ const result = {
 
 describe('graphql to table', () => {
   it('# normal', () => {
-    graphqlToTable(
+    expect(graphqlToTable(
       './schemas/normal.graphql'
-    ).should.be.eql(result);
+    )).toMatchObject(result);
   });
 
   it('# add type config', () => {
-    graphqlToTable(
+    expect(graphqlToTable(
       './schemas/add-type-config.graphql',
       [{ID: 'TEXT'}]
-    ).should.be.eql(result);
+    )).toMatchObject(result);
   });
 
   it('# add exclude fields', () => {
-    graphqlToTable(
+    expect(graphqlToTable(
       './schemas/add-exclude-fields.graphql',
       [type.sqlite],
       ['Skip']
-    ).should.be.eql(result);
+    )).toMatchObject(result);
   });
 
   it('# use "enum"', () => {
-    graphqlToTable(
+    expect(graphqlToTable(
       './schemas/use-enum.graphql', [type.sqlite, {
         Enum: ({values}) => ({
           type: 'TEXT',
@@ -44,7 +42,7 @@ describe('graphql to table', () => {
             .join(' OR ')
         })
       }]
-    ).should.be.eql({
+    )).toMatchObject({
       data: {
         enum: {
           notNull: false,
@@ -56,10 +54,10 @@ describe('graphql to table', () => {
   });
 
   it('# add foreign key', () => {
-    graphqlToTable(
+    expect(graphqlToTable(
       './schemas/add-foreign-key.graphql',
       [type.sqlite]
-    ).should.be.eql({
+    )).toMatchObject({
       ...result,
       data_2: {
         id: {
@@ -86,22 +84,22 @@ describe('graphql to table', () => {
 
   describe('# throw error', () => {
     it('## type "ID" is not defined', () => {
-      (() => {
+      expect(() => {
         graphqlToTable(
           './schemas/normal.graphql', [{
             String: 'TEXT'
           }]
         );
-      }).should.be.throw('type "ID" is not defined');
+      }).toThrowError('type "ID" is not defined');
     });
 
     it('## type "Enum" is not defined', () => {
-      (() => {
+      expect(() => {
         graphqlToTable(
           './schemas/use-enum.graphql',
           [type.sqlite]
         );
-      }).should.be.throw('type "Enum" is not defined');
+      }).toThrowError('type "Enum" is not defined');
     });
   });
 });

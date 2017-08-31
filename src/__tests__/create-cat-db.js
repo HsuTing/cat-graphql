@@ -1,34 +1,32 @@
 'use strict';
 
-import should from 'should'; // eslint-disable-line no-unused-vars
-
 import {createCatDB} from './../backend';
 
 describe('create cat db', () => {
   it('# normal', () => {
-    createCatDB({
+    expect(createCatDB({
       data: {
         id: {
           notNull: false,
           type: 'TEXT'
         }
       }
-    }).should.be.eql({data: {id: 'TEXT'}});
+    })).toMatchObject({data: {id: 'TEXT'}});
   });
 
   it('# not null', () => {
-    createCatDB({
+    expect(createCatDB({
       data: {
         id: {
           notNull: true,
           type: 'TEXT'
         }
       }
-    }).should.be.eql({data: {id: 'TEXT NOT NULL'}});
+    })).toMatchObject({data: {id: 'TEXT NOT NULL'}});
   });
 
   it('# add foreign key', () => {
-    createCatDB({
+    expect(createCatDB({
       data: {
         id: {
           notNull: false,
@@ -36,11 +34,11 @@ describe('create cat db', () => {
           foreign: 'data'
         }
       }
-    }).should.be.eql({data: {id: 'TEXT FOREIGN KEY REFERENCES data(id)'}});
+    })).toMatchObject({data: {id: 'TEXT FOREIGN KEY REFERENCES data(id)'}});
   });
 
   it('# add check', () => {
-    createCatDB({
+    expect(createCatDB({
       data: {
         id: {
           notNull: false,
@@ -48,6 +46,6 @@ describe('create cat db', () => {
           check: '[name] !== \'id\''
         }
       }
-    }).should.be.eql({data: {id: 'TEXT CHECK (id !== \'id\')'}});
+    })).toMatchObject({data: {id: 'TEXT CHECK (id !== \'id\')'}});
   });
 });

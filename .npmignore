@@ -5,8 +5,7 @@ yarn.lock
 .eslint*
 .yo-rc.json
 .travis.yml
-.nycrc
+lib/__tests__
+jest.config.js
 coverage
-.nyc_output
-lib/test
 *.graphql

@@ -1,11 +1,10 @@
 'use strict';
 
-import should from 'should'; // eslint-disable-line no-unused-vars
 import {transformSql} from './../backend';
 
 describe('transform sql', () => {
   it('# normal', () => {
-    transformSql({
+    expect(transformSql({
       data: {
         id: {
           notNull: false,
@@ -18,6 +17,6 @@ describe('transform sql', () => {
           unique: true
         }
       }
-    }).should.be.eql({data: 'CREATE TABLE data (id TEXT PRIMARY KEY, field TEXT NOT NULL UNIQUE)'});
+    })).toMatchObject({data: 'CREATE TABLE data (id TEXT PRIMARY KEY, field TEXT NOT NULL UNIQUE)'});
   });
 });
