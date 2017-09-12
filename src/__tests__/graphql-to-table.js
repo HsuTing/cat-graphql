@@ -5,7 +5,7 @@ import {graphqlToTable, type} from './../backend';
 const result = {
   data: {
     id: {
-      notNull: false,
+      allowNull: true,
       type: 'TEXT'
     }
   }
@@ -45,7 +45,7 @@ describe('graphql to table', () => {
     )).toMatchObject({
       data: {
         enum: {
-          notNull: false,
+          allowNull: true,
           type: 'TEXT',
           check: '[name] === \'RED\' OR [name] === \'BLUE\''
         }
@@ -61,7 +61,7 @@ describe('graphql to table', () => {
       ...result,
       data_2: {
         id: {
-          notNull: true,
+          allowNull: false,
           type: 'TEXT'
         },
         data_ID: {
@@ -71,7 +71,7 @@ describe('graphql to table', () => {
       },
       data_3: {
         data: {
-          notNull: false,
+          allowNull: true,
           type: 'TEXT'
         },
         data_2_ID: {

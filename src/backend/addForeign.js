@@ -21,13 +21,14 @@ export default (data, IDConfig) => {
           }
         );
 
-        if(!data[parentTableName].fields.id)
+        if(!data[parentTableName].fields.id) {
           data[parentTableName].fields.id = getTypeConfig(
             IDConfig, {
-              notNull: true,
+              allowNull: false,
               type: 'ID'
             }
           );
+        }
 
         delete data[parentTableName].fields[parentFieldName];
       });

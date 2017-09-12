@@ -1,12 +1,12 @@
 'use strict';
 
 export const getTypeConfig = (typeConfig, field) => {
-  if(typeConfig instanceof Object)
+  if(typeConfig instanceof Object) {
     field = {
       ...field,
       ...typeConfig
     };
-  else
+  } else
     field.type = typeConfig;
 
   return field;

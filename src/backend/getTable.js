@@ -38,7 +38,7 @@ export default (schemaPath, excludeFields) => fs.read(schemaPath)
       setting = {
         add: false,
         name: null
-      }
+      };
     } else if(setting.add && setting.name && line !== '')
       fields[setting.name].fields += line.replace(/\s\s+/, ' ');
 

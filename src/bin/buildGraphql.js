@@ -7,5 +7,5 @@ import core from './core/buildGraphql';
 
 core(process.argv)
   .catch(err => {
-    throw new Error(err)
+    throw new Error(err);
   });

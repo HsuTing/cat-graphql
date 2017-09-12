@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "jest --silent",
-    "test:watch": "yarn test -- --watch",
+    "test:watch": "yarn test -- --watchAll",
     "lint": "eslint --cache ./src --ext .js",
     "lint:watch": "esw --cache ./src --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
@@ -14,7 +14,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "graphql",
   "author": {
     "name": "hsuting",
@@ -48,20 +48,21 @@
     "babel-preset-stage-0": "^6.22.0",
     "callsite": "^1.0.0",
     "concurrently": "^3.5.0",
-    "eslint": "^4.5.0",
+    "eslint": "^4.6.1",
+    "eslint-config-cat": "https://github.com/HsuTing/eslint-config-cat.git",
     "eslint-config-google": "^0.9.1",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-watch": "^3.1.2",
-    "graphql": "^0.11.2",
+    "graphql": "^0.11.3",
     "graphql-relay": "^0.5.2",
-    "jest": "^20.0.4",
+    "jest": "^21.0.2",
     "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10"
   },
   "dependencies": {
     "chalk": "^2.1.0",
-    "inquirer": "^3.2.2",
+    "inquirer": "^3.2.3",
     "mem-fs": "^1.1.3",
     "mem-fs-editor": "^3.0.2"
   },

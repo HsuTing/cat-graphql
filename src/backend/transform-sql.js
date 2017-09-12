@@ -1,15 +1,30 @@
 'use strict';
 
-import createCatDB from './create-cat-db';
-
 export default data => {
-  const obj = createCatDB(data);
   const output = {};
 
-  Object.keys(obj).forEach(name => {
+  Object.keys(data).forEach(name => {
     output[name] = `CREATE TABLE ${name} (${
-      Object.keys(obj[name]).map(field => {
-        return `${field} ${obj[name][field]}`;
+      Object.keys(data[name]).map(field => {
+        const {type, allowNull, unique, primaryKey, foreign, check} = data[name][field];
+        let query = type;
+
+        if(!allowNull)
+          query += ' NOT NULL';
+
+        if(unique)
+          query += ' UNIQUE';
+
+        if(primaryKey)
+          query += ' PRIMARY KEY';
+
+        if(foreign)
+          query += ` FOREIGN KEY REFERENCES ${foreign}(id)`;
+
+        if(check)
+          query += ` CHECK (${check.replace(/\[name\]/g, field)})`;
+
+        return `${field} ${query}`;
       }).join(', ')
     })`;
   });

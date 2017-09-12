@@ -11,7 +11,7 @@ export const sqlite = {
   ID: 'TEXT'
 };
 
-export const postgresql= {
+export const postgresql = {
   Int: 'int',
   String: 'varchar',
   Boolean: 'bool',

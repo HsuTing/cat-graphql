@@ -36,7 +36,7 @@ export default (data, excludeFields) => {
             data[type] = {__parent__: [obj]};
 
           fieldsObj[fieldName] = {
-            notNull: (/!/g).test(value),
+            allowNull: !(/!/g).test(value),
             type
           };
         }

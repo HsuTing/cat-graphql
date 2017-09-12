@@ -2,12 +2,12 @@
 
 import PropTypes from 'prop-types';
 
-import RelayTypes from './../index';
+import relayTypes from './../index';
 
 describe('index', () => {
   it('# RelayTypes', () => {
     expect(
-      RelayTypes({
+      relayTypes({
         test: PropTypes.string.isRequired
       }).toString()
     ).toBe(

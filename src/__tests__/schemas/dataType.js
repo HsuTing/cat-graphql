@@ -48,7 +48,7 @@ const nodeType = new GraphQLObjectType({
   name: 'NodeType',
   interfaces: [nodeInterface],
   fields: {
-    id: globalIdField(),
+    id: globalIdField()
   }
 });
 
