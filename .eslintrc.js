@@ -40,4 +40,4 @@ module.exports = {
       'babel-module': alias
     }
   }
-}
+};
