@@ -32,10 +32,6 @@ module.exports = {
     'import'
   ],
   settings: {
-    react: {
-      pragma: 'React',
-      version: '15.3'
-    },
     'import/resolver': {
       'babel-module': alias
     }
