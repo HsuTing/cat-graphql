@@ -103,3 +103,19 @@ describe('graphql to table', () => {
     });
   });
 });
+
+describe('type', () => {
+  it('# sequelize', () => {
+    expect(graphqlToTable(
+      './schemas/normal.graphql',
+      [type.sequelize()]
+    )).toMatchObject({
+      data: {
+        id: {
+          allowNull: true,
+          type: 'ID'
+        }
+      }
+    });
+  });
+});

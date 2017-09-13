@@ -14,7 +14,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "graphql",
   "author": {
     "name": "hsuting",
@@ -58,7 +58,8 @@
     "graphql-relay": "^0.5.2",
     "jest": "^21.0.2",
     "pre-commit": "^1.2.2",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "sequelize": "^4.8.3"
   },
   "dependencies": {
     "chalk": "^2.1.0",

@@ -18,3 +18,15 @@ export const postgresql = {
   Float: 'float',
   ID: 'uuid'
 };
+
+export const sequelize = () => {
+  const Sequelize = require('sequelize');
+
+  return {
+    Int: Sequelize.INTEGER,
+    String: Sequelize.STRING,
+    Boolean: Sequelize.BOOLEAN,
+    Float: Sequelize.FLOAT,
+    ID: Sequelize.UUID
+  };
+};

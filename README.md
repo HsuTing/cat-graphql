@@ -6,9 +6,9 @@ You can see [examples](./src/test/).
 #### front end
 ###### RelayTypes
 ```js
-import RelayTypes from 'cat-graphql';
+import relayTypes from 'cat-graphql';
 
-groupFields: RelayTypes({
+groupFields: relayTypes({
   fields: PropTypes.string.isRequired,
 })
 
@@ -44,7 +44,7 @@ result:
 {
   data: {
     id: {
-      notNull: false,
+      allowNull: true,
       type: 'TEXT'
     }   
   }
@@ -61,12 +61,12 @@ import {transformSql} from 'cat-graphql/lib/backend';
 transformSql({
   data: {
     id: {
-      notNull: false,
+      allowNull: true,
       type: 'TEXT',
       primary: true
     },  
     field: {
-      notNull: true,
+      allowNull: false,
       type: 'TEXT',
       unique: true
     }   
