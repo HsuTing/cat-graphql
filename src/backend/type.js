@@ -27,6 +27,9 @@ export const sequelize = () => {
     String: Sequelize.STRING,
     Boolean: Sequelize.BOOLEAN,
     Float: Sequelize.FLOAT,
-    ID: Sequelize.UUID
+    ID: {
+      type: Sequelize.UUID,
+      primaryKey: true
+    }
   };
 };

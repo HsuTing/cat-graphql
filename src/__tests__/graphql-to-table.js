@@ -113,7 +113,7 @@ describe('type', () => {
       data: {
         id: {
           allowNull: true,
-          type: 'ID'
+          primaryKey: true
         }
       }
     });
