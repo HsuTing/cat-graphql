@@ -14,7 +14,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-graphql",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "graphql",
   "author": {
     "name": "hsuting",
@@ -63,7 +63,6 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
-    "inquirer": "^3.2.3",
     "mem-fs": "^1.1.3",
     "mem-fs-editor": "^3.0.2"
   },
