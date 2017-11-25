@@ -1,8 +1,0 @@
-type data {
-  enum: Enum
-}
-
-enum Enum {
-  RED
-  BLUE
-}

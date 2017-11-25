@@ -26,66 +26,12 @@ groupFields: PropTypes.shape({
 */
 ```
 
-#### back end
-###### graphqlToTable
-Use to transform graphql schema to a normal database table.
-- Install: [callsite](https://www.npmjs.com/package/callsite)
-```js
-import {graphqlToTable} from 'cat-graphql/lib/backend';
-
-graphqlToTable('./schema.graphql');
-/*
-input:
-type data {
-  id: ID
-}
-
-result:
-{
-  data: {
-    id: {
-      allowNull: true,
-      type: 'TEXT'
-    }   
-  }
-}
-*/
-```
-
-###### transformSql
-Use to transform data from `graphqlToTable` to `sql`.
-
-```js
-import {transformSql} from 'cat-graphql/lib/backend';
-
-transformSql({
-  data: {
-    id: {
-      allowNull: true,
-      type: 'TEXT',
-      primary: true
-    },  
-    field: {
-      allowNull: false,
-      type: 'TEXT',
-      unique: true
-    }   
-  }
-});
-
-/*
-This will be equal to:
-{
-  data: 'CREATE TABLE data (id TEXT PRIMARY KEY, field TEXT NOT NULL UNIQUE)'
-}
-*/
-```
 
 #### bin
 ###### build-graphql
 Use to build graphql schema for `babel-plugin-relay`.
 ```sh
-build-graphql [arguments]
+build-graphql [schema path] [arguments]
 ```
 Arguments:
 - `--path`, `-p`: Set the path of the output file.
