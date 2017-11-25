@@ -1,6 +1,6 @@
 # Cat-graphql [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 Use to build `schema.graphql` for `babel-plugin-relay`, and other function with `graphql`.
-You can see [examples](./src/test/).
+You can see [examples](./src/__tests__/).
 
 ## How to use
 #### front end
