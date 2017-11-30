@@ -16,7 +16,7 @@ describe('index', () => {
           PropTypes.shape({
             node: PropTypes.shape({
               test: PropTypes.string.isRequired
-            }).isRequired
+            })
           })
         ).isRequired
       }).toString()
@@ -36,7 +36,7 @@ describe('index', () => {
           PropTypes.shape({
             node: PropTypes.shape({
               test: PropTypes.string.isRequired
-            }).isRequired
+            })
           })
         ).isRequired,
         pageInfo: PropTypes.shape({
