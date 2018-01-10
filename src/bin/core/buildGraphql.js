@@ -7,7 +7,7 @@ import commandLineArgs from 'command-line-args';
 
 import type {GraphQLSchema} from 'graphql';
 
-const root = process.cwd();
+const root: string = process.cwd();
 
 export default (
   argv: Array<string>
