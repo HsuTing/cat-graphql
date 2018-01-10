@@ -1,14 +1,29 @@
+// @flow
 'use strict';
 
 import path from 'path';
-import process from 'process';
 import {printSchema} from 'graphql/utilities';
 import commandLineArgs from 'command-line-args';
 
+import type {GraphQLSchema} from 'graphql';
+
 const root = process.cwd();
 
-export default argv => {
-  const {path: filePath, name, schema: schemaPath} = commandLineArgs([{
+export default (
+  argv: Array<string>
+): {
+  filePath: string,
+  schema: string
+} => {
+  const {
+    path: filePath,
+    name,
+    schema: schemaPath
+  }: {
+    path: string,
+    name: string,
+    schema: string
+  } = commandLineArgs([{
     name: 'path',
     alias: 'p',
     type: String,
@@ -29,9 +44,9 @@ export default argv => {
   });
 
   // write schema
-  const realSchemaPath = path.resolve(root, schemaPath);
-  const realFilePath = path.resolve(root, filePath, `${name}.graphql`);
-  const schema = require(realSchemaPath).default;
+  const realSchemaPath: string = path.resolve(root, schemaPath);
+  const realFilePath: string = path.resolve(root, filePath, `${name}.graphql`);
+  const schema: GraphQLSchema = require(realSchemaPath).default || /* istanbul ignore next */ require(realSchemaPath);
 
   return {
     filePath: realFilePath,
