@@ -8,9 +8,7 @@
     "transform-object-assign",
     "transform-class-properties",
     ["module-resolver", {
-      "root": ["./src"],
-      "alias": {
-      }
+      "root": ["./src"]
     }]
   ]
 }
