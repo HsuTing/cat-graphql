@@ -70,6 +70,6 @@
     "mem-fs-editor": "^3.0.2"
   },
   "peerDependencies": {
-    "graphql": ">= 0.10.3"
+    "graphql": ">=0.10.3"
   }
 }
