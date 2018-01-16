@@ -6,8 +6,10 @@
     "lint:watch": "esw --cache ./src --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
-    "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\"",
-    "prepublish": "yarn babel"
+    "prepublish": "yarn babel",
+    "build": "yarn babel",
+    "prod": "yarn babel",
+    "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\""
   },
   "bin": {
     "build-graphql": "./lib/bin/buildGraphql.js"
